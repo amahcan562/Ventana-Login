@@ -37,8 +37,13 @@ fun Login() {
 
             OutlinedTextField(
                 value = user,
-                onValueChange = {user = it},
-                label = {Text("User")}
+                onValueChange = {
+                    if (it.length < 30) {
+                        user = it
+                    }
+                },
+                label = {Text("User")},
+                maxLines = 1
 
             )
 
@@ -46,7 +51,11 @@ fun Login() {
 
             OutlinedTextField(
                 value = password,
-                onValueChange = {password = it},
+                onValueChange = {
+                    if (it.length < 30) {
+                        password = it
+                    }
+                },
                 label = {Text("Password")},
                 visualTransformation = if(passVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 trailingIcon = {
